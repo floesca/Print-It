@@ -7,14 +7,25 @@ const slides = [
 	"./assets/images/slideshow/slide4.png"
 ]
 
+//tableau pour les taglines de chaque image
+const tagLines = [
+	"Impressions tous formats <span>en boutique et en ligne</span>",
+	"Tirages haute définition grand format <span>pour vos bureaux et events</span>",
+	"Grand choix de couleurs <span>de CMJN aux pantones</span>",
+	"Autocollants <span>avec découpe laser sur mesure</span>"
+]
+
 let currentIndex = 0
 const sliderImage = document.querySelector("#banner .banner-img")
 const arrowRight = document.querySelector("#banner .arrow_right")
 const arrowLeft = document.querySelector("#banner .arrow_left")
+const sliderTagLine = document.querySelector("#banner p")
 
-//change la source de l'image suivant l'index du tableau
+
+//change la source de l'image et les texte de la tagline suivant l'index du tableau
 function updateSlider() {
 	sliderImage.src = slides[currentIndex]
+	sliderTagLine.innerHTML = tagLines[currentIndex]
 }
 
 //quand on clique sur le bouton droit, on passe à l'image suivante
