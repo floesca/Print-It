@@ -20,12 +20,20 @@ const sliderImage = document.querySelector("#banner .banner-img")
 const arrowRight = document.querySelector("#banner .arrow_right")
 const arrowLeft = document.querySelector("#banner .arrow_left")
 const sliderTagLine = document.querySelector("#banner p")
-
+const bullets = document.querySelectorAll("#banner .dot")
 
 //change la source de l'image et les texte de la tagline suivant l'index du tableau
 function updateSlider() {
 	sliderImage.src = slides[currentIndex]
 	sliderTagLine.innerHTML = tagLines[currentIndex]
+
+	for (let i = 0; i < bullets.length; i++) {
+  	if (i === currentIndex) {
+    bullets[i].classList.add("dot_selected");
+  	} else {
+    bullets[i].classList.remove("dot_selected");
+  }
+}
 }
 
 //quand on clique sur le bouton droit, on passe à l'image suivante
@@ -54,5 +62,4 @@ function prevSlide() {
 //à chaque clic une fonction précédente s'éxécute
 arrowLeft.addEventListener("click", prevSlide)
 arrowRight.addEventListener("click", nextSlide)
-	
 
