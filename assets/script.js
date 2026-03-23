@@ -22,44 +22,48 @@ const arrowLeft = document.querySelector("#banner .arrow_left")
 const sliderTagLine = document.querySelector("#banner p")
 const bullets = document.querySelectorAll("#banner .dot")
 
-//change la source de l'image et les texte de la tagline suivant l'index du tableau
+//la fonction met à jour l'affichage du slider
 function updateSlider() {
+//modifie l'image et le texte
 	sliderImage.src = slides[currentIndex]
 	sliderTagLine.innerHTML = tagLines[currentIndex]
 
+//boucle : met à jour les bullet points 
 	for (let i = 0; i < bullets.length; i++) {
   	if (i === currentIndex) {
-    bullets[i].classList.add("dot_selected");
+    bullets[i].classList.add("dot_selected") //condition : bullet sélectionné avec une nouvelle classe
   	} else {
-    bullets[i].classList.remove("dot_selected");
+    bullets[i].classList.remove("dot_selected")
   }
 }
 }
 
-//quand on clique sur le bouton droit, on passe à l'image suivante
+//fonction quand on clique sur le bouton droit, on passe à l'image suivante
 function nextSlide() {
 	currentIndex++
 
-	//si on dépasse les 4 images, on repasse à 0 pour le déroulement infini
+	//condition : si on est à la dernière image, on repart au début
 	if (currentIndex >= slides.length) {
 		currentIndex = 0
 	}
+	//réutilisation de la focntion pour mettre à jour l'affichage
 	updateSlider()
 }
 
-//quand on clique sur le bouton gauche, on passe à la photo précédente
+//fonction quand on clique sur le bouton gauche, on passe à la photo précédente
 function prevSlide() {
 	currentIndex--
 
-	//permet le déroulement infini vers la gauche
+	//condition dans le sens inverse
 	if (currentIndex < 0) {
 	currentIndex = slides.length - 1
 	}
+	//réutilisation de la fonction de mise à jour de l'affichage
 	updateSlider()
 }
 
 //eventlistener pour écouter les clicks sur les boutons
-//à chaque clic une fonction précédente s'éxécute
+//à chaque clic une fonction s'éxécute
 arrowLeft.addEventListener("click", prevSlide)
 arrowRight.addEventListener("click", nextSlide)
 
