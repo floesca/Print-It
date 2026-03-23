@@ -20,6 +20,15 @@ const sliderImage = document.querySelector("#banner .banner-img")
 const arrowRight = document.querySelector("#banner .arrow_right")
 const arrowLeft = document.querySelector("#banner .arrow_left")
 const sliderTagLine = document.querySelector("#banner p")
+const dotContainer = document.querySelector("#banner .dots")
+for (i = 0; i < slides.length; i++) {
+	const dot = document.createElement("div")
+	dot.className = "dot"
+	if (i === 0) {
+		dot.className = "dot dot_selected"
+	}
+	dotContainer.appendChild(dot)
+}
 const bullets = document.querySelectorAll("#banner .dot")
 
 //la fonction met à jour l'affichage du slider
